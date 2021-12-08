@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Liste</title>
+    <style>
+        .content {
+    width: 90%;
+    margin: 50px auto;
+}
+.content .form {
+    background-color: #ddd;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.content .form input:nth-child(1) {
+    width: 75%;
+    padding: 15px 10px;
+    border: none;
+    outline: none;
+}
+.content .form input:nth-child(2) {
+    width: 20%;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+.content .tasks {
+    width: 90%;
+    min-height: 200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+}
+.content .tasks .new-task {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    background-color: #ddd;
+    margin-top: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.content .tasks .new-task p {
+    width: 75%;
+    background-color: white;
+    padding: 10px 5px;
+    font-weight: bold;
+}
+.content .tasks .new-task button {
+    width: 10%;
+    padding: 10px 0;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+.done {
+    background-color: #ffee58 !important;
+    opacity: .7;
+}
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="form">
+        <input type="text" class="input">
+        <input type="submit" value="Add Task">
+    </div>
+    <div class="tasks"></div> 
+</div>
+
+<script>
+    let form = document.querySelector('.form');
+let inputText = document.querySelector('input[type="text"]');
+let addTask = document.querySelector('input[type="submit"]');
+let tasks = document.querySelector('.tasks');
+let body = document.querySelector('body');
+
+let storgeCount = window.localStorage.length;
+
+
+// Sand Task From Locale Storge
+    let sandData = function () {
+            window.localStorage.setItem(`Task_${++storgeCount}`, inputText.value);
+    };
+
+function getData () {
+    for (let i = 0; i < storgeCount; i++) {
+        // Create Div New Task  
+            let div = document.createElement('div');
+            let p = document.createElement('p');
+            let button = document.createElement('button');
+                div.className = "new-task";
+                div.appendChild(p);
+                div.appendChild(button);
+                button.innerHTML = "Delete";
+            // Get Task In Locale Storge Withe Key 
+                p.innerHTML = window.localStorage.getItem(window.localStorage.key(i));
+        // Append New Task In Tasks
+            tasks.appendChild(div);
+        // Renem Id Task From Locale Storge Key 
+            tasks.children[i].id = window.localStorage.key(i);
+        button.onclick = function () {
+            window.localStorage.removeItem(`${this.parentElement.id}`);
+            this.parentElement.style.display = "none";
+        };  
+    };  
+};
+        getData();
+
+    let showTask = function () {
+        // Create Div New Task
+            let div = document.createElement('div');
+            let p = document.createElement('p');
+            let button = document.createElement('button');
+                div.className = "new-task";
+                div.appendChild(p);
+                div.appendChild(button);
+                p.innerHTML = inputText.value;
+                button.innerHTML = "Delete";
+        tasks.appendChild(div);
+                button.onclick = function () {
+            console.log(window.localStorage.getItem(window.localStorage.key(storgeCount - 1)));
+            this.parentElement.id  = `Task_${storgeCount}`;
+            window.localStorage.removeItem(`Task_${storgeCount}`);
+
+            this.parentElement.style.display = "none";
+        };
+    };
+
+    addTask.onclick = function () {
+        if (inputText.value.length > 0) {
+            sandData();
+            showTask();
+        };
+    };
+</script>
+
+</body>
+</html>

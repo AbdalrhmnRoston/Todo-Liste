@@ -95,7 +95,10 @@ tasksDiv.addEventListener("click", (e) => {
         // Clear All Tasks From Page 
         clearTasks.onclick = function () {
         tasksDiv.innerHTML = "";
+        // Remove All Tasks From Local Storage
         window.localStorage.removeItem("Tasks");
+        // Remove Button From Page
+        this.className = "close";
         }
     };
 

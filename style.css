@@ -12,6 +12,7 @@
 }
 .content {
     width: 90%;
+    height: calc(100vh - 100px);
     margin: 50px auto;
 }
 .content .form {
@@ -40,6 +41,7 @@
     }
     .content .form input:nth-child(2) {
         width: 30%;
+        min-height: 35px;
         margin: 15px 0 0 auto;
         padding: 10px 0;
         background-color: red;
@@ -105,6 +107,7 @@
         border: none;
         cursor: pointer;
         opacity: .9;
+        color: black;
     }
 }
 .clear-tasks {

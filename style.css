@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.heading {
+    padding: 15px;
+    font-size: 30px;
+    text-align: center;
+    background-color: #ddd;
+    color: red;
+}
+.content {
+    width: 90%;
+    margin: 50px auto;
+}
+.content .form {
+    background-color: #ddd;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width: 425px) {
+    .content .form {
+        flex-direction: column;
+    }
+
+}
+.content .form input:nth-child(1) {
+    width: 75%;
+    padding: 15px 10px;
+    border: none;
+    outline: none;
+}
+@media (max-width: 425px) {
+    .content .form input:nth-child(1) {
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+    }
+    .content .form input:nth-child(2) {
+        width: 30%;
+        margin: 15px 0 0 auto;
+        padding: 10px 0;
+        background-color: red;
+        border: none;
+        cursor: pointer;
+    }
+}
+.content .form input:nth-child(2) {
+    width: 30%;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+.content .tasks {
+    width: 90%;
+    min-height: 200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+}
+.content .tasks .new-task {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    background-color: #ddd;
+    margin-top: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.content .tasks .new-task p {
+    width: 75%;
+    background-color: white;
+    padding: 10px 5px;
+    font-weight: bold;
+}
+@media (max-width: 425px) {
+    .content .tasks .new-task p {
+        width: 60%;
+        min-height: 55px;
+        background-color: white;
+        padding: 10px 5px;
+        font-weight: bold;
+    }
+}
+.content .tasks .new-task button {
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+@media (max-width: 425px) {
+    .content .tasks .new-task button {
+        width: fit-content;
+        padding: 10px;
+        background-color: red;
+        border: none;
+        cursor: pointer;
+        opacity: .9;
+    }
+}
+.clear-tasks {
+    width: fit-content;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+.done {
+    background-color: #ffee58 !important;
+    opacity: .7;
+}
+.close {
+    display: none;
+}
+footer {
+    width: 100%;
+    padding: 10px;
+    background-color: #ddd;
+    text-align: center;
+    text-transform: capitalize;
+}
+footer a {
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
